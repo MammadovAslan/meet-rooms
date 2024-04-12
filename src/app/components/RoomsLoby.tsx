@@ -27,18 +27,14 @@ const RoomsLoby = () => {
         <p>Enter Username</p>
         <Input placeholder="username" value={username} setValue={setUsername} />
       </label>
-      <div className="flex md:flex-row flex-col gap-6 items-start">
-        <button
-          className="p-2 px-4 font-semibold text-md bg-sky-600 text-white rounded-lg transition hover:bg-sky-700"
-          onClick={handleNewRoomClick}
-        >
-          New Room
-        </button>
+      <div className="flex flex-col gap-6 items-start">
         <div className="flex items-center gap-2">
           <Input placeholder="room id" value={roomId} setValue={setRoomId} />
           <Link
-            className={`text-gray-400 ${
-              roomId && username ? "hover:text-blue-600" : ""
+            className={`rounded-lg bg-sky-600 border  p-2 px-4 text-white ${
+              roomId && username
+                ? "hover:text-sky-600 hover:bg-white border-sky-600"
+                : "bg-gray-300 border-gray-300"
             } transition`}
             href={`/${username}/${roomId}`}
             style={{
@@ -48,6 +44,12 @@ const RoomsLoby = () => {
             Join Room
           </Link>
         </div>
+        <button
+          className="p-2 px-4 font-semibold text-md bg-sky-600 border border-sky-600 text-white rounded-lg transition hover:bg-white hover:text-sky-600"
+          onClick={handleNewRoomClick}
+        >
+          New Room
+        </button>
       </div>
       {showModal && <NewRoomModal closeModal={closeModal} roomId={roomId} />}
     </section>
