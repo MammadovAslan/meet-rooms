@@ -21,6 +21,7 @@ const useRooms = () => {
     try {
       const response = await axios.get(`/api/rooms/?username=${username}&room=${roomId}`);
       setToken(response.data.token);
+      console.log("Connections established");
     } catch (error) {
       console.error(error);
     }
