@@ -1,4 +1,3 @@
-import Image from "next/image";
 import RoomsLoby from "./components/RoomsLoby";
 
 export default function Home() {

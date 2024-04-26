@@ -17,7 +17,7 @@ const JoinRoomButton = ({
   return (
     <button
       type="button"
-      className="p-2 px-4 rounded-lg text-white bg-blue-500"
+      className="p-2 px-4 rounded-full text-white bg-blue-500"
       onClick={handleClick}
     >
       Join Room

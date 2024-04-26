@@ -13,7 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className=" h-full">
-      <body className="h-full bg-gray-200">
+      <body className="h-full bg-gray-800" suppressHydrationWarning={true}>
         <main className="h-full">{children}</main>
       </body>
     </html>
