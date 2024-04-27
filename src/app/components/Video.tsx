@@ -35,9 +35,10 @@ const Video = ({
         onDisconnected={() => setToken("")}
       >
         <div className="flex">
-          <div>
+          <div className="grow">
             <VideoStream />
             <ControlBar />
+            <RoomAudioRenderer />
           </div>
           <div className="flex relative">
             {showChat && <Chat />}
@@ -48,7 +49,6 @@ const Video = ({
             </div>
           </div>
         </div>
-        <RoomAudioRenderer />
       </LiveKitRoom>
     </LayoutContextProvider>
   );
