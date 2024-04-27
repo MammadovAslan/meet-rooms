@@ -12,9 +12,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className=" h-full">
-      <body className="h-full bg-gray-800" suppressHydrationWarning={true}>
-        <main className="h-full">{children}</main>
+    <html lang="en" className="h-full">
+      <body
+        className="h-full"
+        style={{
+          backgroundImage: "url('/assets/images/6106991.jpg')",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+        }}
+        suppressHydrationWarning={true}
+      >
+        <main className="h-full relative">{children}</main>
       </body>
     </html>
   );

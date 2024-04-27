@@ -4,7 +4,6 @@ import Link from "next/link";
 import useModal from "../hooks/use-modal";
 import useRooms from "../hooks/use-rooms";
 import Input from "./Input";
-import NewRoomModal from "./NewRoomModal";
 
 const RoomsLoby = () => {
   const { properties, operations } = useRooms();
@@ -13,45 +12,37 @@ const RoomsLoby = () => {
   const { roomId, username } = properties;
   const { getRoomId, handleSubmit, handleUsernameChange, setRoomId, setUsername } = operations;
 
-  const { closeModal, openModal, toggleModal } = modal.operations;
-  const { showModal } = modal.properties;
-
   const handleNewRoomClick = () => {
     getRoomId();
-    openModal();
   };
 
   return (
-    <section className="flex flex-col gap-6 p-4 rounded-lg bg-white">
-      <label className="flex flex-col gap-4">
-        <p>Enter Username</p>
+    <section className="flex flex-col gap-6 md:p-16 p-8  bg-opacity-10 bg-white backdrop-blur-sm rounded-lg shadow-lg border border-white border-opacity-30">
+      <div className="flex flex-col gap-4">
         <Input placeholder="username" value={username} setValue={setUsername} />
-      </label>
-      <div className="flex flex-col gap-6 items-start">
-        <div className="flex items-center gap-2">
-          <Input placeholder="room id" value={roomId} setValue={setRoomId} />
-          <Link
-            className={`rounded-lg bg-sky-600 border  p-2 px-4 text-white ${
-              roomId && username
-                ? "hover:text-sky-600 hover:bg-white border-sky-600"
-                : "bg-gray-300 border-gray-300"
-            } transition`}
-            href={`/${username}/${roomId}`}
-            style={{
-              pointerEvents: roomId && username ? "auto" : "none",
-            }}
-          >
-            Join Room
-          </Link>
-        </div>
+        <Input placeholder="room id" value={roomId} setValue={setRoomId} withCopyButton />
+      </div>
+      <div className="flex flex-col md:flex-row gap-4">
+        <Link
+          className={`rounded-full text-center p-2 px-4 text-white transition ${
+            roomId && username
+              ? "bg-gradient-to-tr from-sky-600 from-0% via-blue-500 via-25% to-indigo-900"
+              : "bg-gray-300 border-gray-300"
+          } transition hover:opacity-80`}
+          href={`/${username}/${roomId}`}
+          style={{
+            pointerEvents: roomId && username ? "auto" : "none",
+          }}
+        >
+          Join Room
+        </Link>
         <button
-          className="p-2 px-4 font-semibold text-md bg-sky-600 border border-sky-600 text-white rounded-lg transition hover:bg-white hover:text-sky-600"
+          className="p-2 px-4 font-semibold text-md text-white rounded-full transition bg-gradient-to-tr from-purple-600 from-0% via-violet-500 via-25% to-purple-900 hover:opacity-80 "
           onClick={handleNewRoomClick}
         >
           New Room
         </button>
       </div>
-      {showModal && <NewRoomModal closeModal={closeModal} roomId={roomId} />}
     </section>
   );
 };
