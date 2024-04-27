@@ -17,29 +17,29 @@ const Room = ({ roomId, username }: { roomId: string; username: string }) => {
 
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    if (videoRef.current) {
-      const constraints = { video: true };
-      setLoading(true);
-      navigator.mediaDevices
-        .getUserMedia(constraints)
-        .then((stream) => {
-          videoRef.current!.srcObject = stream;
-        })
-        .catch((error) => {
-          console.error("Error accessing camera:", error);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (videoRef.current) {
+  //     const constraints = { video: true };
+  //     setLoading(true);
+  //     navigator.mediaDevices
+  //       .getUserMedia(constraints)
+  //       .then((stream) => {
+  //         videoRef.current!.srcObject = stream;
+  //       })
+  //       .catch((error) => {
+  //         console.error("Error accessing camera:", error);
+  //       })
+  //       .finally(() => {
+  //         setLoading(false);
+  //       });
+  //   }
+  // }, []);
 
   return !token ? (
     <>
       <div className="h-full max-h-full flex flex-col md:flex-row items-center md:justify-center md:gap-24 gap-12 md:px-12 px-4 pt-12">
         <div className="bg-black min-w-[50%] min-h-[50%] rounded-3xl overflow-hidden shadow-2xl relative">
-          <video ref={videoRef} autoPlay className="w-full h-full" />
+          {/* <video ref={videoRef} autoPlay className="w-full h-full" /> */}
           <p className="absolute right-0 left-0 bottom-0 bg-black text-white text-center py-4 bg-opacity-40">
             Camera Preview
           </p>

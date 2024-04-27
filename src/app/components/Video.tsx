@@ -24,36 +24,34 @@ const Video = ({
   const [showChat, setShowChat] = useState(false);
 
   return (
-    // <LayoutContextProvider>
-    <LiveKitRoom
-      video={true}
-      audio={true}
-      token={token}
-      serverUrl={process.env.NEXT_PUBLIC_LIVEKIT_URL}
-      data-lk-theme="default"
-      className="overflow-hidden md:px-24 "
-      onDisconnected={() => setToken("")}
-    >
-      <div className="flex">
-        <div className="grow">
-          <VideoStream />
-          <ControlBar />
-        </div>
-        {/* <div className="flex relative">
+    <LayoutContextProvider>
+      <LiveKitRoom
+        video={true}
+        audio={true}
+        token={token}
+        serverUrl={process.env.NEXT_PUBLIC_LIVEKIT_URL}
+        data-lk-theme="default"
+        className="overflow-hidden md:px-24 "
+        onDisconnected={() => setToken("")}
+      >
+        <div className="flex">
+          <div className="grow">
+            <VideoStream />
+            <ControlBar />
+            <RoomAudioRenderer />
+          </div>
+          <div className="flex relative">
             {showChat && <Chat />}
             <div className="absolute md:right-[-56px] md:top-2 right-2 top-2 p-4 md:p-0">
               <ChatToggle onClick={() => setShowChat((prev) => !prev)}>
                 <IoMdChatboxes />
               </ChatToggle>
             </div>
-          </div> */}
-      </div>
-      <RoomAudioRenderer />
-    </LiveKitRoom>
+          </div>
+        </div>
+      </LiveKitRoom>
+    </LayoutContextProvider>
   );
-  {
-    /* </LayoutContextProvider> */
-  }
 };
 
 export default Video;
